@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'partials/head.html' %}
+<body>
+    {% include 'partials/navbar.html' %}
+
+    <div class="container">
+        <div class="profile-header bg-light p-5 mt-2 mb-5">
+            <div class="d-flex justify-content-center">
+                <img class="profile-img" src="{{user.profile_img}}" alt="!">
+            </div>
+            <h1 class="text-center">{{user.first_name}} {{user.last_name}}</h1>
+            <p class="text-center">Recipes: {{user.user_recipes.count}}</p>
+        </div>
+
+    
+        
+
+
+        <div class="row d-flex justify-content-center my-3">
+            {% for recipe in recipes reversed%}
+            <div class="card m-3" style="width: 18rem;">
+                <img class="card-img-top" src="{{recipe.recipe_img}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{recipe.title}}</h5>
+                    <p class="card-text">Posted: {{recipe.created_at|date}}</p>
+                    <div class="row  d-flex justify-content-between align-items-center">
+                        <a href="/recipe/{{recipe.id}}/show" class="btn btn-primary mx-2">View</a>
+                        <p class="card-text mx-2"><i class='bx bxs-heart mx-1'></i>{{recipe.likes.count}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+
+
+
+    {% include 'partials/scripts.html' %}
+</body>
+</html>

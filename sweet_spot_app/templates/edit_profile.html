@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'partials/head.html' %}
+<body>
+    {% include 'partials/navbar.html' %}
+    <div class="container">
+
+        <div class="profile-header bg-light p-5 mt-2 mb-5">
+            <div class="d-flex justify-content-center">
+                <img class="profile-img" src="{{user.profile_img}}" alt="!">
+            </div>
+            <h1 class="text-center">{{user.first_name}} {{user.last_name}}</h1>
+            <p class="text-center">{{user.email}}</p>
+        </div>
+
+
+
+        {% if messages %}
+        <div class="alert alert-danger" role="alert">
+            {% for message in messages %}
+            {{message}}
+            <br>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <div class="col-12">
+            <form action="/profile/{{user.id}}/update" method="POST">
+                {% csrf_token %}
+                <h2>Edit Account Info</h2>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="first_name" value="{{user.first_name}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="last_name" value="{{user.last_name}}">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" value="{{user.email}}">
+                </div>
+                <div class="form-group">
+                    <input type="profile_img" class="form-control" name="profile_img" placeholder="Image URL" value="{{user.profile_img}}">
+                </div>
+                <button class="btn btn-primary my-1" type="submit">Submit Changes</button>
+                <button type="button" class="btn btn-danger my-1" data-toggle="modal" data-target="#confirm_delete">Delete Account</button>
+            </form>
+        </div>
+
+        <div class="modal fade" id="confirm_delete" tabindex="-1" role="dialog" aria-labelledby="confirm_delete" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirm_delete">Delete Account</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">Are you sure you want to delete your account?</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="/profile/{{user.id}}/delete" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    {% include 'partials/scripts.html' %}
+</body>
+</html>

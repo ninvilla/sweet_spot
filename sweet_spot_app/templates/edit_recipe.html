@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'partials/head.html' %}
+<body>
+    {% include 'partials/navbar.html' %}
+    <div class="container">
+
+        {% if messages %}
+        <div class="alert alert-danger" role="alert">
+            {% for message in messages %}
+            {{message}}
+            <br>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="row d-flex justify-content-center my-5">
+            <div class="col-sm-12 col-md-8">
+                <h2>Edit Recipe</h2>
+                <form action="/recipe/{{user_recipe.id}}/update" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="recipe_img">Image URL:</label>
+                        <input type="recipe_img" class="form-control" name="recipe_img" placeholder="Image URL" value="{{user_recipe.recipe_img}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Recipe Name:</label>
+                        <input class="form-control" type="text" name="title" value="{{user_recipe.title}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="ingredients">Ingredients:</label>
+                        <textarea class="form-control" type="text" name="ingredients" value="{{user_recipe.title}}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="instructions">Instructions:</label>
+                        <textarea class="form-control" type="text" name="instructions" value="{{user_recipe.instructions}}"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+
+
+
+        <div class="row d-flex justify-content center">
+            <div class="recipe-name col-sm-12 col-md-8 my-3 mx-auto">
+                <p><span class="recipe-labels">Ingredients: </span>{{user_recipe.ingredients}}</p>
+            </div>
+            <div class="recipe-name col-sm-12 col-md-8 my-3 mx-auto">
+                <p><span class="recipe-labels">Instructions: </span>{{user_recipe.instructions}}</p>
+            </div>
+        </div>
+    </div>
+    
+
+    {% include 'partials/scripts.html' %}
+</body>
+</html>

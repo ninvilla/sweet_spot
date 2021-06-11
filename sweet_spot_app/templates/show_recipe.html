@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'partials/head.html' %}
+<body>
+    {% include 'partials/navbar.html' %}
+    <div class="container">
+
+        <div class="mt-4 d-flex justify-content-center">
+            <img src="{{user_recipe.recipe_img}}" class="img-fluid" alt="Responsive image">
+        </div>
+        
+
+
+
+            
+        <div class="row d-flex justify-content center">
+            <div class="recipe-name col-sm-12 col-md-8 my-2 mx-auto">
+                <h2>{{user_recipe.title}}</h2>
+            </div>
+            <div class="recipe-name col-sm-12 col-md-8 my-2 mx-auto">
+                <p><span class="recipe-labels">Ingredients: </span>{{user_recipe.ingredients}}</p>
+            </div>
+            <div class="recipe-name col-sm-12 col-md-8 my-2 mx-auto">
+                <p><span class="recipe-labels">Instructions: </span>{{user_recipe.instructions}}</p>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-8 my-3 mx-auto">
+            
+            <span>Posted By: <a href="/profile/{{user_recipe.poster.id}}">{{user_recipe.poster.first_name}} {{user_recipe.poster.last_name}}</a></span>
+        </div>
+    </div>
+
+
+    {% include 'partials/scripts.html' %}
+</body>
+</html>

@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.login-jmb{
+    background-image: url("bg.jpg");
+    background-size: cover;
+}
+.main-jmb{
+    background-image: url("bg2.jpg");
+    background-size: cover;
+    padding-bottom: 10%;
+    
+}
+.search-jmb{
+    background-image: url(https://i.pinimg.com/originals/ee/e9/59/eee9598c425187d42f7ff8733f39610a.jpg);
+    background-size: cover;
+    padding-bottom: 10%;
+}
+.main-jmb h1, .main-jmb p{
+    text-shadow: 1px 1px 10px white;
+}
+.logo{
+    font-family: 'Sedgwick Ave', cursive;
+}
+.login{
+    margin-bottom: 20px;
+}
+h2{
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.nav-item{
+    margin: 0px 10px 0px 10px;
+}
+.recipe-labels{
+    font-size: 25px;
+}
+table{
+    margin-top: 30px;
+}
+textarea{
+    height: 200px;
+}
+.profile-img{
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+    border: solid 2px;
+    overflow: hidden;
+    background-image: url("https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg");
+    background-size: cover;
+    object-fit: cover;
+    
+}
+.card-img-top{
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+
+.img-fluid{
+    width: 60%;
+    height: 25vw;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+@media only screen and (max-width: 481px){
+    .main-jmb h1, .search-jmb h1{
+        font-size: 35px;
+    }
+    .main-jmb p, .search-jmb p{
+        font-size: 15px;
+    }
+    .card-img-top{
+        height: 40vw;
+    }
+}
+
+
+
